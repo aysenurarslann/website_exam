@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Python Testi</h2>
+    <form method="POST">
+        {% for i, question in enumerate(questions) %}
+        <div class="question">
+            <p>{{ i+1 }}. {{ question.question }}</p>
+            {% for option in question.options %}
+            <div>
+                <input type="radio" id="question-{{ i }}-{{ loop.index }}" name="question-{{ i }}" value="{{ option }}">
+                <label for="question-{{ i }}-{{ loop.index }}">{{ option }}</label>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit">Gönder</button>
+    </form>
+</div>
+{% endblock %}
